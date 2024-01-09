@@ -3,14 +3,18 @@ import { stripe } from '@/utils/stripe';
 import {
   upsertProductRecord,
   upsertPriceRecord,
-  manageSubscriptionStatusChange
+  manageSubscriptionStatusChange,
+  deleteProductRecord,
+  deletePriceRecord
 } from '@/utils/supabase-admin';
 
 const relevantEvents = new Set([
   'product.created',
   'product.updated',
+  'product.deleted',
   'price.created',
   'price.updated',
+  'price.deleted',
   'checkout.session.completed',
   'customer.subscription.created',
   'customer.subscription.updated',
@@ -24,8 +28,9 @@ export async function POST(req: Request) {
   let event: Stripe.Event;
 
   try {
-    if (!sig || !webhookSecret) return;
+    if (!sig || !webhookSecret) throw new Error("Missing Stripe Signature or Webhook Secret!");
     event = stripe.webhooks.constructEvent(body, sig, webhookSecret);
+    console.log(`🔔  Webhook received: ${event.type}`);
   } catch (err: any) {
     console.log(`❌ Error message: ${err.message}`);
     return new Response(`Webhook Error: ${err.message}`, { status: 400 });
@@ -37,6 +42,12 @@ export async function POST(req: Request) {
         case 'product.created':
         case 'product.updated':
           await upsertProductRecord(event.data.object as Stripe.Product);
+          break;
+        case 'product.deleted':
+          await deleteProductRecord(event.data.object as Stripe.Product);
+          break;
+        case 'price.deleted':
+          await deletePriceRecord(event.data.object as Stripe.Price);
           break;
         case 'price.created':
         case 'price.updated':
