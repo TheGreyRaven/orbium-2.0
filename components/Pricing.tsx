@@ -37,13 +37,7 @@ export default function Pricing({
   products,
   subscription
 }: Props) {
-  const intervals = Array.from(
-    new Set(
-      products.flatMap((product) =>
-        product?.prices?.map((price) => price?.interval)
-      )
-    )
-  );
+  const intervals = Array.from(new Set(products?.flatMap(product => product?.prices?.map(price => price?.interval))))
   const router = useRouter();
   const [billingInterval, setBillingInterval] =
     useState<BillingInterval>('month');
@@ -72,7 +66,7 @@ export default function Pricing({
     }
   };
 
-  if (!products.length)
+  if (!products || products.length === 0)
     return (
       <section className="bg-black">
         <div className="max-w-6xl px-4 py-8 mx-auto sm:py-24 sm:px-6 lg:px-8">
