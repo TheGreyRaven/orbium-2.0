@@ -1,4 +1,5 @@
 import SupabaseProvider from './supabase-provider';
+import { Analytics } from '@vercel/analytics/react';
 import Footer from '@/components/ui/Footer';
 import Navbar from '@/components/ui/Navbar';
 import { PropsWithChildren } from 'react';
@@ -57,6 +58,7 @@ export default function RootLayout({
           </main>
           <Footer />
         </SupabaseProvider>
+        <Analytics />
       </body>
     </html>
   );
