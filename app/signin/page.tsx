@@ -1,8 +1,7 @@
 import { getSession } from '@/app/supabase-server';
-import AuthUI from './AuthUI';
-
 import { redirect } from 'next/navigation';
-import Logo from '@/components/icons/Logo';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/Cards';
 
 export default async function SignIn() {
   const session = await getSession();
@@ -12,13 +11,26 @@ export default async function SignIn() {
   }
 
   return (
-    <div className="flex justify-center height-screen-helper">
-      <div className="flex flex-col justify-between max-w-lg p-3 m-auto w-80 ">
-        <div className="flex justify-center pb-12 ">
-          <Logo width="64px" height="64px" />
-        </div>
-        <AuthUI />
-      </div>
+    <div className="flex justify-center">
+      <Card>
+        <CardHeader className="items-center">
+          <CardTitle className="text-2xl">Welcome to Orbium</CardTitle>
+          <CardDescription>Please sign in or create an account to get started</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Tabs defaultValue="login">
+            <TabsList className="grid grid-cols-2">
+              <TabsTrigger value="login">Login</TabsTrigger>
+              <TabsTrigger value="create">Create account</TabsTrigger>
+            </TabsList>
+            <TabsContent value="login">Make changes to your account here.</TabsContent>
+            <TabsContent value="create">Change your password here.</TabsContent>
+          </Tabs>
+        </CardContent>
+        <CardFooter>
+          <p>Forgot password?</p>
+        </CardFooter>
+      </Card>
     </div>
   );
 }
