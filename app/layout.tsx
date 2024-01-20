@@ -5,8 +5,7 @@ import Navbar from '@/components/ui/Navbar';
 import { PropsWithChildren } from 'react';
 import { ThemeProvider } from '@/components/theme-provider';
 import { cn } from "@/utils/utils"
-import "./globals.css"; 
-import { SpeedInsights } from '@vercel/speed-insights/next';
+import "./globals.css";
 
 const meta = {
   title: 'Next.js Subscription Starter',
@@ -63,7 +62,6 @@ export default function RootLayout({
             <Navbar />
             <main>
               {children}
-              <SpeedInsights />
             </main>
             <Footer />
           </SupabaseProvider>
