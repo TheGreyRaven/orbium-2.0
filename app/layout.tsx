@@ -4,7 +4,7 @@ import Footer from '@/components/ui/Footer';
 import Navbar from '@/components/ui/Navbar';
 import { PropsWithChildren } from 'react';
 import { ThemeProvider } from '@/components/theme-provider';
-import { cn } from "../utils/utils"
+import { cn } from "@/utils/utils"
 import "./globals.css"; 
 
 const meta = {

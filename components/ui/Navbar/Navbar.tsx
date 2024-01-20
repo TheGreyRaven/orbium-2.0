@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import { createServerSupabaseClient } from '@/app/supabase-server';
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '../Sheet';
+import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/Sheet';
 import { Bars3Icon, BookOpenIcon, CogIcon, ArrowRightEndOnRectangleIcon, QuestionMarkCircleIcon, StarIcon } from '@heroicons/react/24/outline';
-import { Button } from '../Button';
-import { Separator } from '../Separator';
+import { Button } from '@/components/ui/Button';
+import { Separator } from '@/components/ui/Separator';
 
 export default async function Navbar() {
   const supabase = createServerSupabaseClient();
