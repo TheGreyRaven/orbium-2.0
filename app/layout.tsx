@@ -8,12 +8,12 @@ import { cn } from "@/utils/utils"
 import "./globals.css";
 
 const meta = {
-  title: 'Next.js Subscription Starter',
-  description: 'Brought to you by Vercel, Stripe, and Supabase.',
+  title: 'Orbium - Next-gen Software Licensing',
+  description: 'Discover the ultimate solution for streamlined and secure software licensing with our cutting-edge SaaS platform. Elevate your development process effortlessly with our pre-made SDKs tailored for multiple programming languages. Experience unparalleled ease of use and robust protection for your intellectual property, ensuring seamless licensing integration for your software projects.',
   cardImage: '/og.png',
   robots: 'follow, index',
   favicon: '/favicon.ico',
-  url: 'https://subscription-starter.vercel.app',
+  url: 'https://orbium.xyz/',
   type: 'website'
 };
 

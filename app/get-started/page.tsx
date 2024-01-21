@@ -11,7 +11,7 @@ export default async function SignIn() {
   }
 
   return (
-    <div className="flex justify-center">
+    <div className="max-w-4xl px-4 py-8 mx-auto sm:py-24 sm:px-6 lg:px-8">
       <Card>
         <CardHeader className="items-center">
           <CardTitle className="text-2xl">Welcome to Orbium</CardTitle>
@@ -23,13 +23,12 @@ export default async function SignIn() {
               <TabsTrigger value="login">Login</TabsTrigger>
               <TabsTrigger value="create">Create account</TabsTrigger>
             </TabsList>
-            <TabsContent value="login">Make changes to your account here.</TabsContent>
+            <TabsContent value="login">
+
+            </TabsContent>
             <TabsContent value="create">Change your password here.</TabsContent>
           </Tabs>
         </CardContent>
-        <CardFooter>
-          <p>Forgot password?</p>
-        </CardFooter>
       </Card>
     </div>
   );

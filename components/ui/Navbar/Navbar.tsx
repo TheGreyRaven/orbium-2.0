@@ -4,6 +4,7 @@ import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTr
 import { Bars3Icon, BookOpenIcon, CogIcon, ArrowRightEndOnRectangleIcon, QuestionMarkCircleIcon, StarIcon } from '@heroicons/react/24/outline';
 import { Button } from '@/components/ui/Button';
 import { Separator } from '@/components/ui/Separator';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../Tooltip';
 
 export default async function Navbar() {
   const supabase = createServerSupabaseClient();
@@ -23,24 +24,34 @@ export default async function Navbar() {
         
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <Link href="/features">
-            <StarIcon className="mr-4 h-6 w-6 hover:text-orange-400" color='white'/>
+            <div className="items-center flex flex-row mr-4">
+              <StarIcon className="mr-2 h-6 w-6 hover:text-orange-400" color='white'/> Features
+            </div>
           </Link>
 
           <Link href="/faq">
-            <QuestionMarkCircleIcon className="mr-4 h-6 w-6 hover:text-orange-400" color='white'/>
+            <div className="items-center flex flex-row mr-4">
+              <QuestionMarkCircleIcon className="mr-2 h-6 w-6 hover:text-orange-400" color='white'/> FAQ
+            </div>
           </Link>
 
           <Link href="/blog">
-            <BookOpenIcon className="mr-4 h-6 w-6 hover:text-orange-400" color='white'/>
+            <div className="items-center flex flex-row mr-4">
+              <BookOpenIcon className="mr-2 h-6 w-6 hover:text-orange-400" color='white'/> Blog
+            </div>
           </Link>
 
           {user ? (
             <Link href="/account">
-              <CogIcon className="mr-4 h-6 w-6 hover:text-orange-400" color='white'/>
+              <div className="items-center flex flex-row mr-4">
+                <CogIcon className="mr-2 h-6 w-6 hover:text-orange-400" color='white'/> Dashboard
+              </div>
             </Link>
           ) : (
-            <Link href="/account">
-              <ArrowRightEndOnRectangleIcon className="mr-4 h-6 w-6 hover:text-orange-400" color='white'/>
+            <Link href="/get-started">
+              <div className="items-center flex flex-row mr-4">
+                <ArrowRightEndOnRectangleIcon className="mr-2 h-6 w-6 hover:text-orange-400" color='white'/> Get started
+              </div>
             </Link>
           )}
         </div>

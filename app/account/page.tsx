@@ -23,7 +23,7 @@ export default async function Account() {
   const user = session?.user;
 
   if (!session) {
-    return redirect('/signin');
+    return redirect('/get-started');
   }
 
   const subscriptionPrice =
