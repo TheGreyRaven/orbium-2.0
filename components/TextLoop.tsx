@@ -36,7 +36,7 @@ const LoopingText = () => {
                         <h2 className="text-3xl font-extrabold text-white sm:text-6xl">{SWITCHABLE_TEXT[i]}</h2>
                     </animated.div>
                 ))}
-            <h2 className="text-3xl font-extrabold text-white sm:text-6xl">Using <span className="text-custom-orange">Orbium</span></h2>
+            <h2 className="text-3xl font-extrabold text-white sm:text-6xl">using <span className="text-custom-orange">Orbium</span></h2>
         </div>
     )
 }
