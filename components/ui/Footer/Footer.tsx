@@ -1,8 +1,6 @@
-import Link from 'next/link';
-
-export default function Footer() {
+const Footer = () => {
   return (
-    <footer className="bg-black w-full mt-32 sm:absolute sm:bottom-0">
+    <footer className="bg-black w-full xl:absolute xl:bottom-4 lg:mt-32">
       <div className="sm:max-w-6xl mx-auto p-4 md:py-8">
         <div className="sm:flex sm:items-center sm:justify-between">
           <div
@@ -49,3 +47,5 @@ export default function Footer() {
     </footer>
   );
 }
+
+export default Footer;
