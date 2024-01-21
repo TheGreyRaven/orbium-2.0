@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import TextTransition, { presets } from 'react-text-transition';
+import React, { useState } from 'react';
+import { useTransition, animated } from '@react-spring/web'
 
 const SWITCHABLE_TEXT = [
     'license your software',
@@ -14,20 +14,29 @@ const SWITCHABLE_TEXT = [
 
 const LoopingText = () => {
     const [index, setIndex] = useState(0)   
-
-    useEffect(() => {
-        const interval = setInterval(() => setIndex((index) => index + 1), 3000)
-
-        return () => clearTimeout(interval)
-    }, [])
+    const transitions = useTransition(index, {
+        key: index,
+        from: { opacity: 0 },
+        enter: { opacity: 1 },
+        leave: { opacity: 0 },
+        config: { duration: 2000 },
+        onRest: (_a, _b, item) => {
+          if (index === item) {
+            setIndex(state => (state + 1) % SWITCHABLE_TEXT.length)
+          }
+        },
+        exitBeforeEnter: true,
+    })
 
     return (
         <div className="flex flex-col">
-            <h2 className="text-2xl font-extrabold text-white sm:text-6xl">A better way to</h2>
-            <TextTransition springConfig={presets.wobbly}>
-                <h2 className="text-2xl font-extrabold text-white sm:text-6xl">{SWITCHABLE_TEXT[index % SWITCHABLE_TEXT.length]}</h2>
-            </TextTransition>
-            <h2 className="text-2xl font-extrabold text-white sm:text-6xl">Using <span className="text-orange-500">Orbium</span></h2>
+            <h2 className="text-3xl font-extrabold text-white sm:text-6xl">A better way to</h2>
+                {transitions((style, i) => (
+                    <animated.div style={style}>
+                        <h2 className="text-3xl font-extrabold text-white sm:text-6xl">{SWITCHABLE_TEXT[i]}</h2>
+                    </animated.div>
+                ))}
+            <h2 className="text-3xl font-extrabold text-white sm:text-6xl">Using <span className="text-custom-orange">Orbium</span></h2>
         </div>
     )
 }

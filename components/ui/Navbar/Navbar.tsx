@@ -4,7 +4,6 @@ import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTr
 import { Bars3Icon, BookOpenIcon, CogIcon, ArrowRightEndOnRectangleIcon, QuestionMarkCircleIcon, StarIcon } from '@heroicons/react/24/outline';
 import { Button } from '@/components/ui/Button';
 import { Separator } from '@/components/ui/Separator';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../Tooltip';
 
 export default async function Navbar() {
   const supabase = createServerSupabaseClient();
@@ -13,10 +12,10 @@ export default async function Navbar() {
   } = await supabase.auth.getUser();
 
   return (
-    <header className="bg-black">
+    <header className="bg-black sticky sm:top-6 top-0 bg-opacity-80 sm:mx-auto sm:max-w-6xl sm:rounded-full z-50">
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div>
-          <a href="/" className="flex flex-row items-center hover:text-orange-400">
+          <a href="/" className="flex flex-row items-center hover:text-custom-orange">
             <img className="h-12 w-auto" src="/Orbium.png" alt="" />
             <h1 className="text-2xl font-bold">Orbium</h1>
           </a>
@@ -24,33 +23,33 @@ export default async function Navbar() {
         
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <Link href="/features">
-            <div className="items-center flex flex-row mr-4">
-              <StarIcon className="mr-2 h-6 w-6 hover:text-orange-400" color='white'/> Features
+            <div className="items-center flex flex-row mr-4 hover:text-custom-orange">
+              <StarIcon className="mr-2 h-6 w-6" color='white'/> Features
             </div>
           </Link>
 
           <Link href="/faq">
-            <div className="items-center flex flex-row mr-4">
-              <QuestionMarkCircleIcon className="mr-2 h-6 w-6 hover:text-orange-400" color='white'/> FAQ
+            <div className="items-center flex flex-row mr-4 hover:text-custom-orange">
+              <QuestionMarkCircleIcon className="mr-2 h-6 w-6" color='white'/> FAQ
             </div>
           </Link>
 
           <Link href="/blog">
-            <div className="items-center flex flex-row mr-4">
-              <BookOpenIcon className="mr-2 h-6 w-6 hover:text-orange-400" color='white'/> Blog
+            <div className="items-center flex flex-row mr-4 hover:text-custom-orange">
+              <BookOpenIcon className="mr-2 h-6 w-6" color='white'/> Blog
             </div>
           </Link>
 
           {user ? (
             <Link href="/account">
-              <div className="items-center flex flex-row mr-4">
-                <CogIcon className="mr-2 h-6 w-6 hover:text-orange-400" color='white'/> Dashboard
+              <div className="items-center flex flex-row mr-4 hover:text-custom-orange">
+                <CogIcon className="mr-2 h-6 w-6" color='white'/> Dashboard
               </div>
             </Link>
           ) : (
             <Link href="/get-started">
-              <div className="items-center flex flex-row mr-4">
-                <ArrowRightEndOnRectangleIcon className="mr-2 h-6 w-6 hover:text-orange-400" color='white'/> Get started
+              <div className="items-center flex flex-row mr-4 hover:text-custom-orange">
+                <ArrowRightEndOnRectangleIcon className="mr-2 h-6 w-6" color='white'/> Login
               </div>
             </Link>
           )}
@@ -88,7 +87,7 @@ export default async function Navbar() {
               ) : (
                 <Link href="/get-started">
                   <Button variant="outline" className="w-full mt-4">
-                    <ArrowRightEndOnRectangleIcon className="mr-2 h-4 w-4" color='white'/> Get started
+                    <ArrowRightEndOnRectangleIcon className="mr-2 h-4 w-4" color='white'/> Login
                   </Button>
                 </Link>
               )}
