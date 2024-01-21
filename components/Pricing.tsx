@@ -170,7 +170,7 @@ export default function Pricing({
                             lifetime
                           </Badge>
                         ) : (
-                          `/${price.interval}`
+                          `/${(price.interval === 'month' && index === 1) ? ' 6 ' : ''} ${price.interval}`
                         )}
                       </CardDescription>
                     </CardHeader>
@@ -307,7 +307,7 @@ export default function Pricing({
                               lifetime
                             </Badge>
                           ) : (
-                            `/${price.interval}`
+                            `/${(price.interval === 'month' && index === 1) ? ' 6 ' : ''} ${price.interval}`
                           )}
                         </CardDescription>
                       </CardHeader>
