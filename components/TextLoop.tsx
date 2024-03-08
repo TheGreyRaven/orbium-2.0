@@ -18,8 +18,8 @@ const LoopingText = () => {
         key: index,
         from: { opacity: 0 },
         enter: { opacity: 1 },
-        leave: { opacity: 0 },
-        config: { duration: 1800 },
+        leave: { opacity: 0, delay: 1200 },
+        config: { duration: 1200 },
         onRest: (_a, _b, item) => {
           if (index === item) {
             setIndex(state => (state + 1) % SWITCHABLE_TEXT.length)
