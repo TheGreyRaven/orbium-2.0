@@ -1,7 +1,14 @@
 import { getSession } from '@/app/supabase-server';
-import { redirect } from 'next/navigation';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle
+} from '@/components/ui/Cards';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/Cards';
+import { redirect } from 'next/navigation';
 
 export default async function SignIn() {
   const session = await getSession();
@@ -15,7 +22,9 @@ export default async function SignIn() {
       <Card>
         <CardHeader className="items-center">
           <CardTitle className="text-2xl">Welcome to Orbium</CardTitle>
-          <CardDescription>Please sign in or create an account to get started</CardDescription>
+          <CardDescription>
+            Please sign in or create an account to get started
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <Tabs defaultValue="login">
@@ -23,9 +32,7 @@ export default async function SignIn() {
               <TabsTrigger value="login">Login</TabsTrigger>
               <TabsTrigger value="create">Create account</TabsTrigger>
             </TabsList>
-            <TabsContent value="login">
-
-            </TabsContent>
+            <TabsContent value="login"></TabsContent>
             <TabsContent value="create">Change your password here.</TabsContent>
           </Tabs>
         </CardContent>
